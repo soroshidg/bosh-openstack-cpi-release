@@ -6,7 +6,6 @@ import (
 	"github.com/cloudfoundry/bosh-openstack-cpi-release/src/openstack_cpi_golang/cpi/config"
 	"github.com/cloudfoundry/bosh-openstack-cpi-release/src/openstack_cpi_golang/cpi/image"
 	"github.com/cloudfoundry/bosh-openstack-cpi-release/src/openstack_cpi_golang/cpi/image/root_image"
-	"github.com/cloudfoundry/bosh-openstack-cpi-release/src/openstack_cpi_golang/cpi/loadbalancer"
 	"github.com/cloudfoundry/bosh-openstack-cpi-release/src/openstack_cpi_golang/cpi/methods"
 	"github.com/cloudfoundry/bosh-openstack-cpi-release/src/openstack_cpi_golang/cpi/network"
 	"github.com/cloudfoundry/bosh-openstack-cpi-release/src/openstack_cpi_golang/cpi/openstack"
@@ -82,7 +81,7 @@ func (f Factory) New(ctx apiv1.CallContext) (apiv1.CPI, error) {
 			image.NewImageServiceBuilder(openstackService, f.cpiConfig, f.logger),
 			network.NewNetworkServiceBuilder(openstackService, f.cpiConfig, f.logger),
 			compute.NewComputeServiceBuilder(openstackService, f.cpiConfig, f.logger),
-			loadbalancer.NewLoadbalancerServiceBuilder(openstackService, f.cpiConfig, f.logger),
+			//loadbalancer.NewLoadbalancerServiceBuilder(openstackService, f.cpiConfig, f.logger),
 			f.cpiConfig,
 			f.logger,
 		),
@@ -90,7 +89,7 @@ func (f Factory) New(ctx apiv1.CallContext) (apiv1.CPI, error) {
 		methods.NewDeleteVMMethod(
 			network.NewNetworkServiceBuilder(openstackService, f.cpiConfig, f.logger),
 			compute.NewComputeServiceBuilder(openstackService, f.cpiConfig, f.logger),
-			loadbalancer.NewLoadbalancerServiceBuilder(openstackService, f.cpiConfig, f.logger),
+			//loadbalancer.NewLoadbalancerServiceBuilder(openstackService, f.cpiConfig, f.logger),
 			f.cpiConfig,
 			f.logger,
 		),
